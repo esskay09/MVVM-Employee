@@ -6,6 +6,7 @@ import com.terranullius.tamshaemployees.features.employee_list.data.EmployeeRepo
 import com.terranullius.tamshaemployees.util.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 

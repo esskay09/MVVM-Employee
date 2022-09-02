@@ -1,4 +1,4 @@
-package com.terranullius.tamshaemployees.features.employee_list.data.theme
+package com.terranullius.tamshaemployees.compose.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,34 +1,39 @@
-package com.terranullius.tamshaemployees.features.employee_list.data.theme
+package com.terranullius.tamshaemployees.compose.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
+    background = Color.Black,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = Color.White,
+    onSurface = Color.White,
 )
 
 private val LightColorPalette = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
+    secondary = Teal200,
     background = Color.White,
-    surface = Color.White,
+    surface = Color.LightGray,
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black,
-    */
+
 )
 
 @Composable
-fun TamshaEmployeesTheme(
+fun TamashaEmployeesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
@@ -44,4 +49,14 @@ fun TamshaEmployeesTheme(
         shapes = Shapes,
         content = content
     )
+}
+
+@Composable
+fun TamashaApp(content: @Composable () -> Unit) {
+    TamashaEmployeesTheme {
+        Surface(
+            color = MaterialTheme.colors.background,
+            content = content
+        )
+    }
 }
