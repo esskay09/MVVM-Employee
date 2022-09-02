@@ -3,7 +3,7 @@ package com.terranullius.tamshaemployees.api
 import com.terranullius.tamshaemployees.api.models.EmployeeListDto
 import retrofit2.http.GET
 
-interface TamashaApi {
+interface EmployeeApi {
     companion object {
         const val BASE_URL = "https://mocki.io/v1/"
     }

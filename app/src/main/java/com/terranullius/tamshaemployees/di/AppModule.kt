@@ -1,6 +1,9 @@
 package com.terranullius.tamshaemployees.di
 
-import com.terranullius.tamshaemployees.api.TamashaApi
+import android.app.Application
+import androidx.room.Room
+import com.terranullius.tamshaemployees.api.EmployeeApi
+import com.terranullius.tamshaemployees.db.EmployeeDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +19,20 @@ object AppModule {
     @Provides
     @Singleton
     fun providesRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl(TamashaApi.BASE_URL)
+        .baseUrl(EmployeeApi.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+    @Provides
+    @Singleton
+    fun provideTamashaApi(retrofit: Retrofit): EmployeeApi = retrofit.create(EmployeeApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesDatabase(app: Application): EmployeeDatabase =
+        Room.databaseBuilder(
+            app,
+            EmployeeDatabase::class.java,
+            "employee_db"
+        ).build()
 }
