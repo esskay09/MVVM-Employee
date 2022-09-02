@@ -1,5 +1,6 @@
 package com.terranullius.tamshaemployees.di
 
+import com.terranullius.tamshaemployees.api.TamashaApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +16,7 @@ object AppModule {
     @Provides
     @Singleton
     fun providesRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com/")
+        .baseUrl(TamashaApi.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 }
