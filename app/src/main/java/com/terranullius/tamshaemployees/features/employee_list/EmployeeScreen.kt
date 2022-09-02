@@ -3,15 +3,16 @@
 package com.terranullius.tamshaemployees.features.employee_list
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -44,6 +45,10 @@ private fun EmployeeScreenContent(
     isLoading: Boolean = false,
     errorMsg: String? = null
 ) {
+    var clickedItemId by remember {
+        mutableStateOf("")
+    }
+
     LazyColumn(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -69,15 +74,23 @@ private fun EmployeeScreenContent(
                 Text(text = errorMsg, style = MaterialTheme.typography.h6)
             }
         }
-        if (employees != null) itemsIndexed(
-            employees,
-            key = { _, employee -> employee.id }) { index, employee ->
+        if (employees != null) itemsIndexed(employees,
+            key = { _, employee -> employee.id }
+        ) { index, employee ->
             val translation = getTranslationXAnim(index = index)
+            val itemScale =
+                animateFloatAsState(targetValue = if (clickedItemId == employee.id) 1.1f else 1f)
             EmployeeItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .graphicsLayer {
                         translationX = translation.value
+                        scaleY = itemScale.value
+                        scaleX = itemScale.value
+                    }
+                    .clickable {
+                        clickedItemId = if (clickedItemId == employee.id) "" //already clicked
+                        else employee.id
                     },
                 employee = employee
             )
