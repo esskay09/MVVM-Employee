@@ -25,7 +25,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTamashaApi(retrofit: Retrofit): EmployeeApi = retrofit.create(EmployeeApi::class.java)
+    fun provideTamashaApi(retrofit: Retrofit): EmployeeApi =
+        retrofit.create(EmployeeApi::class.java)
 
     @Provides
     @Singleton
@@ -35,4 +36,8 @@ object AppModule {
             EmployeeDatabase::class.java,
             "employee_db"
         ).build()
+
+    @Provides
+    @Singleton
+    fun provideEmployeeDao(db: EmployeeDatabase) = db.employeeDao()
 }

@@ -8,7 +8,7 @@ data class EmployeeEntity(
     @PrimaryKey(autoGenerate = false)
     val id: String,
     val name: String,
-    val age: String,
+    val age: Int,
     val salary: Long,
-    val profilePic: String
+    val profilePic: String?
 )
