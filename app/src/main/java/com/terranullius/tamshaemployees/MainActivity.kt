@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.terranullius.tamshaemployees.ui.theme.TamshaEmployeesTheme
+import com.terranullius.tamshaemployees.features.employee_list.data.theme.TamshaEmployeesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

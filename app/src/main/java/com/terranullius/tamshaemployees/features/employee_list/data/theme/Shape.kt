@@ -1,4 +1,4 @@
-package com.terranullius.tamshaemployees.ui.theme
+package com.terranullius.tamshaemployees.features.employee_list.data.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
