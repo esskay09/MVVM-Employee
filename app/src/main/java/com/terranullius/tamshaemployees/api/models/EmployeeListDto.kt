@@ -2,7 +2,7 @@ package com.terranullius.tamshaemployees.api.models
 
 
 import com.google.gson.annotations.SerializedName
-import com.terranullius.tamshaemployees.db.EmployeeEntity
+import com.terranullius.tamshaemployees.features.employee_list.data.Employee
 
 data class EmployeeListDto(
     @SerializedName("data")
@@ -12,8 +12,8 @@ data class EmployeeListDto(
     @SerializedName("status")
     val status: String = ""
 ) {
-    fun toEmployeeEntityList() = data.map {
-        it.toEmployeeEntity()
+    fun toEmployeeList() = data.map {
+        it.toEmployee()
     }
 }
 
@@ -29,7 +29,7 @@ data class EmployeeDto(
     @SerializedName("profile_image")
     val profileImage: String? = null
 ) {
-    fun toEmployeeEntity() = EmployeeEntity(
+    fun toEmployee() = Employee(
         age = employeeAge,
         name = employeeName,
         salary = employeeSalary,

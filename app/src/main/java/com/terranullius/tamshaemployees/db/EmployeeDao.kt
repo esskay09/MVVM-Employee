@@ -4,17 +4,18 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.terranullius.tamshaemployees.features.employee_list.data.Employee
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EmployeeDao {
 
-    @Query("SELECT * FROM employee_table")
-    fun getAllEmployees(): Flow<List<EmployeeEntity>>
+    @Query("SELECT * FROM employees")
+    fun getAllEmployees(): Flow<List<Employee>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertEmployees(restaurants: List<EmployeeEntity>)
+    suspend fun insertEmployees(restaurants: List<Employee>)
 
-    @Query("DELETE FROM employee_table")
+    @Query("DELETE FROM employees")
     suspend fun deleteAllEmployees()
 }

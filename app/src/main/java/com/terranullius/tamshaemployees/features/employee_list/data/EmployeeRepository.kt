@@ -22,7 +22,7 @@ class EmployeeRepository @Inject constructor(
         saveFetchResult = { employees ->
             db.withTransaction {
                 employeeDao.deleteAllEmployees()
-                employeeDao.insertEmployees(employees.toEmployeeEntityList())
+                employeeDao.insertEmployees(employees.toEmployeeList())
             }
         }
     )
